@@ -1,0 +1,10 @@
+﻿<h3>@Text</h3>
+<h3>@Text1</h3>
+<input @bind-value="@Text" @bind-value:event="oninput" 
+    @onkeypress="@(async() => await AfterInput.InvokeAsync(Text))" />
+<input value="@Text" @onkeypress="@(async() => await AfterInput.InvokeAsync(Text1))" />
+@code {
+    [Parameter] public string Text { get; set; } = "Abdulah";
+    [Parameter] public string Text1 { get; set; } = "Abdulah";
+    [Parameter] public EventCallback<string> AfterInput { get; set; }
+}
